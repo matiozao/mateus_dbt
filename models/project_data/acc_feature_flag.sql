@@ -29,7 +29,7 @@ final_table AS (
             WHEN p.day < DATE(p.ff_created_at) THEN NULL
             WHEN (TIMESTAMP(p.acc_created_at) < TIMESTAMP(p.ff_created_at) AND p.day < DATE(p.ff_created_at)) THEN NULL
             ELSE COALESCE(valid_from, GREATEST(ff_created_at, acc_created_at))
-        END AS last_updated_date,
+        END AS last_updated,
         CASE
             WHEN p.day < DATE(p.acc_created_at) THEN NULL
             WHEN p.day < DATE(p.ff_created_at) THEN NULL
@@ -47,4 +47,4 @@ final_table AS (
             AND (p.day BETWEEN DATE(afs.valid_from) AND DATE(afs.valid_to) OR (p.day >= DATE(afs.valid_from) AND afs.valid_to IS NULL))
 )
 SELECT * FROM final_table
-ORDER BY day DESC, name, flag_name, last_updated_date
+ORDER BY day DESC, name, flag_name, last_updated
