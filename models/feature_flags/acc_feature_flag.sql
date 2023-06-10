@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 WITH partner_feature_flags_day AS (
     SELECT
         acc.id AS account_id,
