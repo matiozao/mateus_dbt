@@ -39,7 +39,7 @@ final_table AS (
             WHEN afs.is_enabled = true THEN 'activated'
             WHEN afs.is_enabled = false THEN 'deactivated'
             ELSE NULL
-        END AS activation,
+        END AS status,
     FROM
         partner_feature_flags_day AS p
         LEFT JOIN {{ source('datasource', 'account_flag_settings') }} AS afs ON p.account_id = afs.account_id
