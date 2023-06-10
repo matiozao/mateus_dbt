@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: datasource
+    schema: datasource
+    database: peek-project-389313
+    tables:
+      - name: account_flag_settings
+      - name: accounts
+      - name: dates
+      - name: feature_flags
